@@ -1,5 +1,5 @@
 #include<stdio.h>
-#pragma pack(1)
+#pragma pack(1)//using pragma pack (1) for packaging the memory units into 1 bytes
 int main()
 {
     struct size{
