@@ -1,15 +1,16 @@
 //Threads concept
-//waiting for other thread to complete and exit
-//using pthread_join(&thread, NULL);
+//passing data to threads
 #include <stdio.h>
 #include<unistd.h>
 #include<pthread.h>
-void* myturn(void *)
+void* myturn(void * arg)//void ptr is generic and can point to anything
 {
+    int *iptr = (int*) arg;
     for(int i=0; i<8; i++)
     {
-    sleep(1);
-    printf("My turn %d\n", i);
+        sleep(1);
+        printf("My turn %d %d\n", i, *iptr);
+        (*iptr)++;
     }
     return NULL;
 }
@@ -25,9 +26,11 @@ void yourturn()
 int main()
 {
     pthread_t newthread;
-    pthread_create(&newthread, NULL, myturn, NULL);
+    int v = 5;
+    pthread_create(&newthread, NULL, myturn, &v);
     //myturn();
     yourturn();
-    pthread_join(newthread, NULL);
+    pthread_join(&newthread, NULL);
+    printf("thread's done: v=%d\n",v);
     return 0;
 }
