@@ -28,6 +28,6 @@ int main()
     pthread_create(&newthread, NULL, myturn, NULL);
     //myturn();
     yourturn();
-    pthread_join(&newthread, NULL);
+    pthread_join(newthread, NULL);
     return 0;
 }
