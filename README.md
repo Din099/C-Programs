@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # c-codes
 =======
 Disclaimer:
